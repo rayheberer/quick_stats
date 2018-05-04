@@ -70,6 +70,17 @@ def ecdf_plots(data, features, plot_cols=2, quartile_markers=False):
         
     return fig, axs
 
+def spread_plot(data, features, groups, plot=sns.boxplot):
+    fig, axs = plt.subplots(len(groups), len(features))
+    fig.subplots_adjust(hspace=0.3)
+    
+    for ix, group in enumerate(groups):
+        for iy, feature in enumerate(features):
+            
+            plot(x=data[group], y=data[feature], ax=axs[ix, iy])
+            
+    return fig, axs
+
 def scatter(data, x, y):
     fig, ax = plt.subplots()
 
